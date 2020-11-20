@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=yes"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Meter count</title>
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/touch-icon-ipad-retina.jpg">
+  </head>
+  
+  <body>
+  	<canvas id="myCanvas" class="myCanvas"></canvas>
+    <div class="banner"><h1>Meter Count</h1></div>
+    
+    <hr>
+    <span style="color:WHITE;font-size:20px;z-index:1">The runway (m)</span>
+    <input type="number" id = "totalmeter" class="totalmeter" value=400>
+    <span style="color:WHITE;font-size:20px;">Time (mins)</span>
+    <input type="number" id = "timex" class="timex" value=1>
+    
+    <span><button onclick="reset()" class="reset" >Reset</button></span>
+    
+    <span><button onclick="countdown()" class="start" id="start" >START</button></span>
+    <span><button onclick="sendMail()" class="sendMail" id="sendMail">SEND MAIL</button></span>  
+    <input type="text" id = "email" class="email" value="mcqueenyung@gmail.com">
+      
+    <div id="timer">
+      <input id="minutes" class="min" type="text" disabled>
+      <input id="seconds" class="sec" type="text" disabled>
+    </div>
+    <hr>
+   
+    <span id="f1" class="f1">Number</span>
+    <span id="f2"class="f2">Finished</span>
+    <span id="f3"class="f3">Remainder(rounds)</span>
+    <span id="f4"class="f4">Sub</span>
+    <span id="f5"class="f5">Add</span>
+    
+    <!-- <audio id="audio_w" src="./audio/button11.mp3"></audio>
+    <audio id="audio_c" src="./audio/button9.wav"></audio> -->
+      
+    <input type="text" id = "USERID_1" class="userid_c1" value=R1>
+    <input type="text" id = "USERID_2" class="userid_c2" value=R2>
+    <input type="text" id = "USERID_3" class="userid_c3" value=R3>
+    <input type="text" id = "USERID_4" class="userid_c4" value=R4>
+    <input type="text" id = "USERID_5" class="userid_c5" value=R5>
+    <input type="text" id = "USERID_6" class="userid_c6" value=R6>
+    
+    <input type="text" id = "RM_1" class="RM_1" value=0>
+    <input type="text" id = "RM_2" class="RM_2" value=0>
+    <input type="text" id = "RM_3" class="RM_3" value=0>
+    <input type="text" id = "RM_4" class="RM_4" value=0>
+    <input type="text" id = "RM_5" class="RM_5" value=0>
+    <input type="text" id = "RM_6" class="RM_6" value=0>
+    
+    <span id="output_1" class="output_c1" >0</span>
+    <span id="output_2" class="output_c2" >0</span>
+    <span id="output_3" class="output_c3" >0</span>
+    <span id="output_4" class="output_c4" >0</span>
+    <span id="output_5" class="output_c5" >0</span>
+    <span id="output_6" class="output_c6" >0</span>
+    
+    <button id="btnsub_1" class="btn_sub_1" onclick="Calsub_1()">-</button>
+    <button id="btnsub_2" class="btn_sub_2" onclick="Calsub_2()">-</button>
+    <button id="btnsub_3" class="btn_sub_3" onclick="Calsub_3()">-</button>
+    <button id="btnsub_4" class="btn_sub_4" onclick="Calsub_4()">-</button>
+    <button id="btnsub_5" class="btn_sub_5" onclick="Calsub_5()">-</button>
+    <button id="btnsub_6" class="btn_sub_6" onclick="Calsub_6()">-</button>
+    
+    <button id="btn_1" class="btn_add_1" onclick="Cal_1()">+</button>
+    <button id="btn_2" class="btn_add_2" onclick="Cal_2()">+</button>
+    <button id="btn_3" class="btn_add_3" onclick="Cal_3()">+</button>
+    <button id="btn_4" class="btn_add_4" onclick="Cal_4()">+</button>
+    <button id="btn_5" class="btn_add_5" onclick="Cal_5()">+</button>
+    <button id="btn_6" class="btn_add_6" onclick="Cal_6()">+</button>
+    
+    <span id="totaltxt_1" class="totaltxt_c_1">m</span>
+    <span id="totaltxt_2" class="totaltxt_c_2">m</span>
+    <span id="totaltxt_3" class="totaltxt_c_3">m</span>
+    <span id="totaltxt_4" class="totaltxt_c_4">m</span>
+    <span id="totaltxt_5" class="totaltxt_c_5">m</span>
+    <span id="totaltxt_6" class="totaltxt_c_6">m</span>
+    
+    <span id="List1_1" class="list1_c_1">0</span>
+    <span id="List1_2" class="list1_c_2">0</span>
+    <span id="List1_3" class="list1_c_3">0</span>
+    <span id="List1_4" class="list1_c_4">0</span>
+    <span id="List1_5" class="list1_c_5">0</span>
+    <span id="List1_6" class="list1_c_6">0</span>
+    
+    <button id="btn1_1" class="btn1_c_1" onclick="Cal1_1()">CONFIRM</button>
+    <button id="btn1_2" class="btn1_c_2" onclick="Cal1_2()">CONFIRM</button>
+    <button id="btn1_3" class="btn1_c_3" onclick="Cal1_3()">CONFIRM</button>
+    <button id="btn1_4" class="btn1_c_4" onclick="Cal1_4()">CONFIRM</button>
+    <button id="btn1_5" class="btn1_c_5" onclick="Cal1_5()">CONFIRM</button>
+    <button id="btn1_6" class="btn1_c_6" onclick="Cal1_6()">CONFIRM</button>
+    
+     <span id="radio_opt_1" class="radio_opt_c_1">
+     <input type="radio" name="remainder_1" value=0 checked>0 R
+     <input type="radio" name="remainder_1" value=0.25     >1/4 R
+     <input type="radio" name="remainder_1" value=0.5      >1/2 R
+     <input type="radio" name="remainder_1" value=0.75     >3/4 R
+     <input type="radio" name="remainder_1" value=1        >1 R
+     </span>
+    
+     <span id="radio_opt_2" class="radio_opt_c_2">
+     <input type="radio" name="remainder_2" value=0 checked>0 R 
+     <input type="radio" name="remainder_2" value=0.25     >1/4 R
+     <input type="radio" name="remainder_2" value=0.5      >1/2 R
+     <input type="radio" name="remainder_2" value=0.75     >3/4 R
+     <input type="radio" name="remainder_2" value=1        >1 R 
+     </span>
+    
+     <span id="radio_opt_3" class="radio_opt_c_3">
+     <input type="radio" name="remainder_3" value=0 checked>0 R 
+     <input type="radio" name="remainder_3" value=0.25     >1/4 R
+     <input type="radio" name="remainder_3" value=0.5      >1/2 R
+     <input type="radio" name="remainder_3" value=0.75     >3/4 R
+     <input type="radio" name="remainder_3" value=1        >1 R  
+     </span>
+    
+     <span id="radio_opt_4" class="radio_opt_c_4">
+     <input type="radio" name="remainder_4" value=0 checked>0 R 
+     <input type="radio" name="remainder_4" value=0.25     >1/4 R
+     <input type="radio" name="remainder_4" value=0.5      >1/2 R
+     <input type="radio" name="remainder_4" value=0.75     >3/4 R
+     <input type="radio" name="remainder_4" value=1        >1 R  
+     </span>
+    
+     <span id="radio_opt_5" class="radio_opt_c_5">
+     <input type="radio" name="remainder_5" value=0 checked>0 R 
+     <input type="radio" name="remainder_5" value=0.25     >1/4 R
+     <input type="radio" name="remainder_5" value=0.5      >1/2 R
+     <input type="radio" name="remainder_5" value=0.75     >3/4 R
+     <input type="radio" name="remainder_5" value=1        >1 R
+     </span>
+    
+     <span id="radio_opt_6" class="radio_opt_c_6">
+     <input type="radio" name="remainder_6" value=0 checked>0 R 
+     <input type="radio" name="remainder_6" value=0.25     >1/4 R
+     <input type="radio" name="remainder_6" value=0.5      >1/2 R
+     <input type="radio" name="remainder_6" value=0.75     >3/4 R
+     <input type="radio" name="remainder_6" value=1        >1 R
+     </span>   
+     
+     <script src="scripts/app.js"></script>
+      
+  </body>
+</html>

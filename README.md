@@ -1,2 +1,2 @@
 # MeterCount
-http://mq-web.net/app/MeterCount/app
+http://app.mq-web.net/MeterCount/app
